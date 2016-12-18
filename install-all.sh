@@ -1,5 +1,6 @@
 #!/bin/bash
 
+./install-upx.sh
 ./install-boost.sh
 ./install-conf.sh http://download.savannah.gnu.org/releases/libunwind/libunwind-1.1.tar.gz
 ./install-conf.sh http://mirror.clarkson.edu/gnu/gsl/gsl-2.3.tar.gz

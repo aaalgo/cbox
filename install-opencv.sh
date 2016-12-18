@@ -30,3 +30,4 @@ env | grep CMAKE >> CMakeCache.txt
 cmake .
 make
 make install
+ln -s /opt/cbox/share/OpenCV/3rdparty/lib/* /opt/cbox/lib
