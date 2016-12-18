@@ -19,8 +19,14 @@ export BUILD_PACKAGE=OFF
 export BUILD_PERF_TESTS=OFF
 export WITH_CUFFT=OFF
 export WITH_GSTREAMER=OFF
+export WITH_OPENEXR=OFF
+export CMAKE_INSTALL_PREFIX=/opt/cbox
+export CMAKE_CXX_FLAGS="-DSIZE_MAX=__SIZE_MAX__ -DINT_FAST32_MIN=__INT_FAST32_MIN__ -DINT_FAST32_MAX=__INT_FAST32_MAX__"
 
 cd opencv-3.1.0
+env | grep WITH > CMakeCache.txt
+env | grep BUILD >> CMakeCache.txt
+env | grep CMAKE >> CMakeCache.txt
 cmake .
 make
 make install

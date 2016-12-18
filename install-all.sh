@@ -24,6 +24,9 @@ RECONF=1 ./install-conf.sh https://github.com/gperftools/gperftools
 ./install-conf.sh https://curl.haxx.se/download/curl-7.51.0.tar.gz --with-ssl=/opt/cbox/ssl
 ./install-conf.sh http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.gz
 ./install-conf.sh http://downloads.sourceforge.net/project/giflib/giflib-5.1.4.tar.bz2
+./install-conf.sh http://download.savannah.nongnu.org/releases/openexr/ilmbase-2.2.0.tar.gz
+./install-conf.sh http://download.savannah.nongnu.org/releases/openexr/openexr-2.2.0.tar.gz --disable-ilmbasetest 
+./install-cmake.sh https://www.ece.uvic.ca/~frodo/jasper/software/jasper-2.0.6.tar.gz -DALLOW_IN_SOURCE_BUILD=ON
 ./install-conf.sh https://pocoproject.org/releases/poco-1.7.6/poco-1.7.6.tar.gz
 ./install-cmake.sh https://github.com/tplgy/cppcodec
 ./install-cmake.sh https://github.com/datasift/served -DRE2_INCLUDE_DIR=/opt/cbox/include -DRE2_LIBRARY=/opt/cbox/lib/libre2.a -DSERVED_BUILD_TESTS=OFF -DSERVED_BUILD_STATIC=ON -DSERVED_BUILD_SHARED=OFF

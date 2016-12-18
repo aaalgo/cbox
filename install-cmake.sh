@@ -8,14 +8,35 @@ then
   exit 1
 fi
 
-if echo $URL | grep github > /dev/null
+FN=`basename $URL`
+
+# guess ext
+if echo $FN | grep '.zip$' > /dev/null
 then
-  BN=`basename $URL`
-  git clone $URL
-  pushd $BN
-  git submodule init
-  git submodule update
-  popd
+  EXT=.zip
+elif echo $FN | grep '.tar' > /dev/null
+then
+  EXT=`echo $FN | grep -o '\.tar.*$'`
+fi
+BN=`basename $FN $EXT`
+
+if [ ! -f $BN ]
+then
+  if echo $URL | grep github
+  then
+    git clone $URL
+  else
+	  if [ ! -f $FN ]
+	  then
+	    wget "$URL" -O $FN
+	  fi
+	  if [ $EXT == .zip ]
+	  then
+	    unzip $FN
+	  else
+	    tar xf $FN
+	  fi
+  fi
 fi
 
 cd $BN
