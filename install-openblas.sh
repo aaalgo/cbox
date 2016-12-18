@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL=$1
+URL=https://github.com/xianyi/OpenBLAS
 shift
 
 if [ -z "$URL" ]
@@ -42,19 +42,6 @@ cd $BN
 export CFLAGS="-fPIC -I/opt/cbox/include"
 export CXXFLAGS="-fPIC -I/opt/cbox/include"
 export LDFLAGS="-L/opt/cbox/lib -L/opt/cbox/lib64"
-if [ -n "$RECONF" ]
-then
-  autoreconf
-fi
-if [ ! -f configure ]
-then
-  autoreconf
-fi
-if ./configure  --enable-static --disable-shared --prefix=/opt/cbox $*
-then
-  true
-else
-  ./configure --prefix=/opt/cbox $*
-fi
-make
-make install $MAKE_SUFFIX
+
+make TARGET=NEHALEM
+make install PREFIX=/opt/cbox

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL=$1
+URL=http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2
 shift
 
 if [ -z "$URL" ]
@@ -39,22 +39,8 @@ then
   fi
 fi
 cd $BN
-export CFLAGS="-fPIC -I/opt/cbox/include"
-export CXXFLAGS="-fPIC -I/opt/cbox/include"
-export LDFLAGS="-L/opt/cbox/lib -L/opt/cbox/lib64"
-if [ -n "$RECONF" ]
-then
-  autoreconf
-fi
-if [ ! -f configure ]
-then
-  autoreconf
-fi
-if ./configure  --enable-static --disable-shared --prefix=/opt/cbox $*
-then
-  true
-else
-  ./configure --prefix=/opt/cbox $*
-fi
-make
-make install $MAKE_SUFFIX
+
+export CFLAGS=-fPIC
+export CXXFLAGS=-fPIC
+./bootstrap.sh
+./b2 cxxflags="-fPIC" variant=release link=static threading=multi runtime-link=static --prefix=/opt/cbox install

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL=$1
+URL=https://www.openssl.org/source/openssl-1.1.0c.tar.gz
 shift
 
 if [ -z "$URL" ]
@@ -41,20 +41,7 @@ fi
 cd $BN
 export CFLAGS="-fPIC -I/opt/cbox/include"
 export CXXFLAGS="-fPIC -I/opt/cbox/include"
-export LDFLAGS="-L/opt/cbox/lib -L/opt/cbox/lib64"
-if [ -n "$RECONF" ]
-then
-  autoreconf
-fi
-if [ ! -f configure ]
-then
-  autoreconf
-fi
-if ./configure  --enable-static --disable-shared --prefix=/opt/cbox $*
-then
-  true
-else
-  ./configure --prefix=/opt/cbox $*
-fi
+export LDFLAGS="-L/opt/cbox/lib"
+./config no-shared threads --prefix=/opt/cbox --openssldir=/opt/cbox/ssl
 make
-make install $MAKE_SUFFIX
+make install

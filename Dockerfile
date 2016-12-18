@@ -8,3 +8,13 @@ RUN wget https://cmake.org/files/v3.7/cmake-3.7.1-Linux-x86_64.tar.gz ; tar xf c
 RUN yum install -y mysql-devel
 RUN yum install -y cvs subversion git
 RUN echo 'export PATH=/opt/cbox/bin:$PATH' > /etc/profile.d/cbox.sh
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+RUN wget https://copr.fedorainfracloud.org/coprs/praiskup/autotools/repo/epel-6/praiskup-autotools-epel-6.repo -O /etc/yum.repos.d/autotools.repo
+RUN yum install -y autotools-latest
+ADD cbox.sh /etc/profile.d/cbox.sh
+RUN ln -s /opt/rh/autotools-latest/enable /etc/profile.d/autotools.sh
+RUN yum install -y devtoolset-4-gcc-gfortran
+ADD cbox.sh /etc/profile.d/cbox.sh
+RUN yum install -y glibc-static
+RUN rpm -e mysql-devel mysql mysql-libs;  rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-common-5.7.17-1.el6.x86_64.rpm; rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-libs-5.7.17-1.el6.x86_64.rpm; rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-devel-5.7.17-1.el7.x86_64.rpm
+RUN yum install -y unzip
