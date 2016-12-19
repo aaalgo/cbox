@@ -10,3 +10,4 @@ RUN rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-common
 RUN wget https://nodejs.org/dist/v7.2.1/node-v7.2.1-linux-x64.tar.xz ; tar xf node-v7.2.1-linux-x64.tar.xz -C /usr/local --strip-components=1 ; rm node-v7.2.1-linux-x64.tar.xz
 RUN wget https://cmake.org/files/v3.7/cmake-3.7.1-Linux-x86_64.tar.gz ; tar xf cmake-3.7.1-Linux-x86_64.tar.gz -C /usr/local --strip-components=1 ; rm cmake-3.7.1-Linux-x86_64.tar.gz
 ADD cbox.sh /etc/profile.d/cbox.sh
+ADD cbox /opt/

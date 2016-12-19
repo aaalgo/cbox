@@ -25,6 +25,10 @@ then
   if echo $URL | grep github
   then
     git clone $URL
+    pushd $BN
+    git submodule init
+    git submodule update
+    popd
   else
 	  if [ ! -f $FN ]
 	  then

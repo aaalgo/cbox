@@ -39,9 +39,14 @@ then
   fi
 fi
 cd $BN
+if echo $URL | grep c-ares >& /dev/null
+then
+true
+else
 export CFLAGS="-fPIC -I/opt/cbox/include"
 export CXXFLAGS="-fPIC -I/opt/cbox/include"
 export LDFLAGS="-L/opt/cbox/lib -L/opt/cbox/lib64"
+fi
 if [ -n "$RECONF" ]
 then
   autoreconf
