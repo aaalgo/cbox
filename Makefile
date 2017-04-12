@@ -1,3 +1,3 @@
 
 all:
-	docker build -t aaalgo:cbox .
+	docker build -t aaalgo/cbox .
