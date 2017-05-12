@@ -30,7 +30,7 @@ RECONF=1 ./install-conf.sh https://github.com/gperftools/gperftools
 ./install-openssl.sh
 ./install-conf.sh https://curl.haxx.se/download/curl-7.51.0.tar.gz --with-ssl=/opt/cbox/ssl
 ./install-conf.sh http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.gz
-./install-conf.sh https://pocoproject.org/releases/poco-1.7.6/poco-1.7.6.tar.gz
+./install-poco.sh https://pocoproject.org/releases/poco-1.7.6/poco-1.7.6.tar.gz
 ./install-conf.sh http://dicom.offis.de/download/dcmtk/snapshot/dcmtk-3.6.1_20161102.tar.gz
 ./install-cmake.sh https://github.com/tplgy/cppcodec
 ./install-cmake.sh https://github.com/datasift/served -DRE2_INCLUDE_DIR=/opt/cbox/include -DRE2_LIBRARY=/opt/cbox/lib/libre2.a -DSERVED_BUILD_TESTS=OFF -DSERVED_BUILD_STATIC=ON -DSERVED_BUILD_SHARED=OFF
@@ -38,3 +38,4 @@ RECONF=1 ./install-conf.sh https://github.com/gperftools/gperftools
 ./install-cmake.sh https://github.com/tplgy/cppcodec
 ./install-cmake.sh https://github.com/aaalgo/ezcurl
 ./install-cmake.sh http://downloads.sourceforge.net/project/soci/soci/soci-3.2.3/soci-3.2.3.tar.gz
+./install-protobuf.sh https://github.com/google/protobuf
