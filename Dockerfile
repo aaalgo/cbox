@@ -9,5 +9,6 @@ RUN yum install -y autotools-latest; ln -s /opt/rh/autotools-latest/enable /etc/
 RUN rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-common-5.7.17-1.el6.x86_64.rpm; rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-libs-5.7.17-1.el6.x86_64.rpm; rpm -ivh http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-community-devel-5.7.17-1.el7.x86_64.rpm
 RUN wget https://nodejs.org/dist/v7.2.1/node-v7.2.1-linux-x64.tar.xz ; tar xf node-v7.2.1-linux-x64.tar.xz -C /usr/local --strip-components=1 ; rm node-v7.2.1-linux-x64.tar.xz
 RUN wget https://cmake.org/files/v3.7/cmake-3.7.1-Linux-x86_64.tar.gz ; tar xf cmake-3.7.1-Linux-x86_64.tar.gz -C /usr/local --strip-components=1 ; rm cmake-3.7.1-Linux-x86_64.tar.gz
+RUN yum install -y java-1.8.0-openjdk-devel
 ADD cbox.sh /etc/profile.d/cbox.sh
 ADD cbox /opt/cbox

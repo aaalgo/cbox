@@ -28,7 +28,10 @@ CC="gcc -I/opt/cbox/include -L/opt/cbox/lib" ./install-conf.sh http://downloads.
 RECONF=1 ./install-conf.sh https://github.com/threatstack/libmagic
 RECONF=1 ./install-conf.sh https://github.com/gperftools/gperftools
 ./install-openssl.sh
-./install-conf.sh https://curl.haxx.se/download/curl-7.51.0.tar.gz --with-ssl=/opt/cbox/ssl
+export LIBS="-lpthread -ldl"
+./install-conf.sh https://curl.haxx.se/download/curl-7.51.0.tar.gz --with-ssl=/opt/cbox/ssl --enable-ares
+export LIBS=
+mv /opt/bin/curl /opt/bin/cbox-curl
 ./install-conf.sh http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.gz
 ./install-poco.sh https://pocoproject.org/releases/poco-1.7.6/poco-1.7.6.tar.gz
 ./install-conf.sh http://dicom.offis.de/download/dcmtk/snapshot/dcmtk-3.6.1_20161102.tar.gz
